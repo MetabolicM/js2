@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript" src="/js/delivery.js"></script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      overflow: auto; /* добавить полосу прокрутки */
+    }
+
+    main {
+      min-height: 100%;
+    }
+
+    .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+      background-color: #f2f2f2;
+    }
+
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+      background-color: white;
+    }
+  </style>
+
+  <title>Delivery Page</title>
+
+</head>
+<body>
+
+<header class="navbar navbar-expand-md navbar-dark bg-dark ">
+  <div class="navbar-nav mr-auto mb-0">
+    <h5 class="text-light bg-dark mr-2 font-weight-bold" id="headerMail"><span>EMAIL_HERE</span></h5>
+    <h5 class="text-light bg-dark mr-2">with roles</h5>
+    <h5 class="text-white mr-2 font-weight-bold" id="headerRole"><span>ROLES_HERE</span></h5>
+  </div>
+  <div class="navbar-nav mt-2 mt-md-0">
+    <a class="nav-link" href="/logout">Logout</a>
+  </div>
+</header>
+
+<div class="row bg-light h-100">
+  <!-- left navbar-->
+  <div class="col-lg-2 bg-white pt-4 w-100">
+    <nav>
+      <a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin"
+         class="list-group-item list-group-item-action ">Admin</a>
+      <a href="/user" class="list-group-item list-group-item-action ">User</a>
+      <a sec:authorize="hasRole('ROLE_ADMIN')" href="/delivery"
+         class="list-group-item list-group-item-action active">Delivery</a>
+    </nav>
+  </div>
+
+  <!-- central panel-->
+  <div class="col-lg-10 bg-light pt-4 pr-5 w-100">
+    <main>
+
+      <!-- head of central panel-->
+      <h1>Delivery Information Page</h1>
+
+      <table class="table table-sm table-striped bg-white" id="common">
+
+        <tr>
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test1</h3>
+              <button type="button" class="btn btn btn-success" onclick="getTest()">Get Test</button> <!----------------->
+              <h2 id="1result">Result = </h2>
+            </div>
+          </th>
+
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test2</h3>
+              <button type="button" class="btn btn btn-success" onclick="postTest()">Post Test</button> <!----------------->
+              <form  style="width: 270px;" id="test_form">
+                <label  style="width: 270px;" for="new-test">Enter test string: </label>
+                <input class="mb-3" style="width: 270px;" type="text" id="new-test"/>
+              </form>
+              <h2 id="2result">Result = </h2>
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test3</h3>
+              <button type="button" class="btn btn btn-success" onclick="getTestDost()">Get Dost Test</button> <!----------------->
+              <h2 id="3result">Result = </h2>
+            </div>
+          </th>
+
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test4</h3>
+              <button type="button" class="btn btn btn-success" onclick="postDost()">Post Test</button> <!----------------->
+              <form  style="width: 270px;" id="test_form2">
+                <label  style="width: 270px;" for="new-test2">Enter test string: </label>
+                <input class="mb-3" style="width: 270px;" type="text" id="new-test2"/>
+              </form>
+              <h2 id="4result">Result = </h2>
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test3</h3>
+            </div>
+          </th>
+
+          <th scope="col">
+            <div class=" bg-black p-4 border">
+              <h3>Test4</h3>
+            </div>
+          </th>
+        </tr>
+
+      </table>
+
+
+      <!--<div class="tab-pane fade border rounded" id="new" role="tabpanel" aria-labelledby="profile-tab">
+        <h3 class="ml-4">Get Test</h3>
+        <div class=" bg-black p-4 border border-left-0 border-right-0 border-bottom-0">
+        </div>
+
+        <br>
+
+        <h3 class="ml-4">Post Test</h3>
+        <div class=" bg-black p-4 border border-left-0 border-right-0 border-bottom-0">
+        </div>
+      </div>-->
+
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
